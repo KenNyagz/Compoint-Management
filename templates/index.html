@@ -35,14 +35,14 @@
   </div>
   <hr>
   <div class="w3-container">
-    <h5>Dashboard</h5>
+    <h4><bold>Dashboard</bold></h4>
   </div>
   <div class="w3-bar-block">
     <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
     <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i>  Overview</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
+    <!--<a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Traffic</a>
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  Orders</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  History</a>-->
     <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  Settings</a><br><br>
   </div>
 </nav>
@@ -105,6 +105,7 @@
           <th>Product</th>
           <th>Category</th>
           <th>Quantity</th>
+          <th>Specs</th>
           <th>Selling Price (Kes)</th>
           <th>Buying Price (Kes)</th>
           <th></th>
@@ -116,15 +117,18 @@
             <td>{{ product[1] }}</td>
             <td>{{ product[2] }}</td>
             <td>{{ product[3] }}</td>
-            <td><strong>{{ product[4] }}</strong></td>
+            <td>{{ product[4] }}</td>
+            <td><strong>{{ product[6] }}</strong></td>
             <td>{{ product[5] }}</td>
-            <td><button onclick="" class="w3-button w3-green">Update</button><button onclick="" class="w3-button w3-red">Delete</button></td>
+            <td><button onclick="window.location.href='{{ url_for('update_product', id=product[0]) }}'" class="w3-button w3-blue">Update</button>
+                <button onclick="if (confirm('Are you sure you want to delete this product?')) window.location.href='{{ url_for('delete_product', id=product[0]) }}'" class="w3-button w3-red">Delete</button></td>
           </tr>
         {% endfor %}
       
       </tbody>
     </table>
-    <button onclick="" class="w3-button w3-green">Add Product</button>
+
+    <button onclick="window.location.href='{{ url_for('add_product') }}'" class="w3-button w3-green" method="POST">Add Product</button>
   <br>
 
   <!-- Footer -->
